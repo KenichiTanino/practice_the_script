@@ -1,0 +1,28 @@
+[Sun Feb 11 10:10:58 2018] [info] Listening at "http://0.0.0.0:8000"
+[Sun Feb 11 10:11:08 2018] [debug] POST "/RPC2"
+[Sun Feb 11 10:11:08 2018] [debug] Class "Xmlrpctest::Controller::Method" is not a controller
+[Sun Feb 11 10:11:08 2018] [debug] Template "method/process.html.ep" not found
+[Sun Feb 11 10:11:08 2018] [debug] Template "not_found.development.html.ep" not found
+[Sun Feb 11 10:11:08 2018] [debug] Template "not_found.html.ep" not found
+[Sun Feb 11 10:11:08 2018] [debug] Rendering template "mojo/debug.html.ep"
+[Sun Feb 11 10:11:08 2018] [debug] Rendering template "mojo/menubar.html.ep"
+[Sun Feb 11 10:11:08 2018] [debug] Your secret passphrase needs to be changed
+[Sun Feb 11 10:11:08 2018] [debug] 404 Not Found (0.01877s, 53.277/s)
+[Sun Feb 11 10:11:25 2018] [debug] POST "/RPC2"
+[Sun Feb 11 10:11:25 2018] [debug] Class "Xmlrpctest::Controller::Method" is not a controller
+[Sun Feb 11 10:11:25 2018] [debug] Template "method/process.html.ep" not found
+[Sun Feb 11 10:11:25 2018] [debug] Template "not_found.development.html.ep" not found
+[Sun Feb 11 10:11:25 2018] [debug] Template "not_found.html.ep" not found
+[Sun Feb 11 10:11:25 2018] [debug] Rendering cached template "mojo/debug.html.ep"
+[Sun Feb 11 10:11:25 2018] [debug] Rendering cached template "mojo/menubar.html.ep"
+[Sun Feb 11 10:11:25 2018] [debug] 404 Not Found (0.004207s, 237.699/s)
+[Sun Feb 11 10:13:06 2018] [info] Listening at "http://0.0.0.0:8000"
+[Sun Feb 11 10:13:10 2018] [debug] POST "/RPC2"
+[Sun Feb 11 10:13:10 2018] [debug] Routing to controller "Xmlrpctest::Controller::Method" and action "process"
+[Sun Feb 11 10:13:10 2018] [debug] 200 OK (0.021439s, 46.644/s)
+[Sun Feb 11 10:13:10 2018] [debug] POST "/RPC2"
+[Sun Feb 11 10:13:10 2018] [debug] Routing to controller "Xmlrpctest::Controller::Method" and action "process"
+[Sun Feb 11 10:13:10 2018] [debug] 200 OK (0.004002s, 249.875/s)
+[Sun Feb 11 10:13:10 2018] [debug] POST "/RPC2"
+[Sun Feb 11 10:13:10 2018] [debug] Routing to controller "Xmlrpctest::Controller::Method" and action "process"
+[Sun Feb 11 10:13:10 2018] [debug] 200 OK (0.009371s, 106.712/s)

@@ -1,0 +1,63 @@
+[Sun Feb 11 19:02:36 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:02:41 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:02:41 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:02:41 2018] [debug] 200 OK (0.000922s, 1084.599/s)
+[Sun Feb 11 19:02:41 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:02:41 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:02:41 2018] [debug] 200 OK (0.000412s, 2427.184/s)
+[Sun Feb 11 19:02:41 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:02:41 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:02:41 2018] [debug] 200 OK (0.000632s, 1582.278/s)
+[Sun Feb 11 19:11:42 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:11:49 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:11:49 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:11:49 2018] [debug] 200 OK (0.001288s, 776.398/s)
+[Sun Feb 11 19:11:49 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:11:49 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:11:49 2018] [debug] 200 OK (0.000457s, 2188.184/s)
+[Sun Feb 11 19:11:49 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:11:49 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:11:49 2018] [debug] 200 OK (0.00046s, 2173.913/s)
+[Sun Feb 11 19:12:38 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:12:42 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:12:42 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:12:42 2018] [debug] 200 OK (0.001129s, 885.740/s)
+[Sun Feb 11 19:12:42 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:12:42 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:12:42 2018] [debug] 200 OK (0.000785s, 1273.885/s)
+[Sun Feb 11 19:12:42 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:12:42 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:12:42 2018] [debug] 200 OK (0.000659s, 1517.451/s)
+[Sun Feb 11 19:14:30 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:14:34 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:14:34 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:14:34 2018] [debug] 200 OK (0.001519s, 658.328/s)
+[Sun Feb 11 19:14:34 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:14:34 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:14:34 2018] [debug] 200 OK (0.000498s, 2008.032/s)
+[Sun Feb 11 19:14:34 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:14:34 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:14:34 2018] [debug] 200 OK (0.000591s, 1692.047/s)
+[Sun Feb 11 19:20:51 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:20:57 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:20:57 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:20:57 2018] [debug] 200 OK (0.001256s, 796.178/s)
+[Sun Feb 11 19:20:57 2018] [error] Undefined subroutine &FxmlrpcTest::Dumper called at /home/tanino/perl5/perlbrew/perls/perl-5.26.1/lib/site_perl/5.26.1/Mojolicious/Plugin/FrontierXMLRPC/Rpc2.pm line 33.
+
+[Sun Feb 11 19:20:57 2018] [debug] Template "exception.development.xml.ep" not found
+[Sun Feb 11 19:20:57 2018] [debug] Template "exception.xml.ep" not found
+[Sun Feb 11 19:20:57 2018] [debug] Template "exception.development.html.ep" not found
+[Sun Feb 11 19:20:57 2018] [debug] Template "exception.html.ep" not found
+[Sun Feb 11 19:20:57 2018] [debug] Rendering template "mojo/debug.html.ep"
+[Sun Feb 11 19:20:57 2018] [debug] Rendering template "mojo/menubar.html.ep"
+[Sun Feb 11 19:20:57 2018] [debug] Your secret passphrase needs to be changed
+[Sun Feb 11 19:21:22 2018] [info] Listening at "http://0.0.0.0:50030"
+[Sun Feb 11 19:21:28 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:21:28 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:21:28 2018] [debug] 200 OK (0.001479s, 676.133/s)
+[Sun Feb 11 19:21:28 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:21:28 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:21:28 2018] [debug] 200 OK (0.000706s, 1416.431/s)
+[Sun Feb 11 19:21:28 2018] [debug] POST "/RPC2"
+[Sun Feb 11 19:21:28 2018] [debug] Routing to controller "Mojolicious::Plugin::FrontierXMLRPC::Rpc2" and action "proxy_xmlrpc"
+[Sun Feb 11 19:21:28 2018] [debug] 200 OK (0.002065s, 484.262/s)
