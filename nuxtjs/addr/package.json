@@ -1,0 +1,30 @@
+{
+  "name": "addr",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "Torofield <tanino@a2.mbn.or.jp>",
+  "private": true,
+  "scripts": {
+    "dev": "HOST=0.0.0.0 PORT=8888 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "element-ui": "^2.3.7",
+    "nuxt": "^1.4.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.5.0",
+    "prettier": "^1.12.1"
+  }
+}
