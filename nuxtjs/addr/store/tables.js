@@ -1,4 +1,5 @@
 export const state = () => ({
+  // 初期化
   addr_list: [
     {
       name: "tanino",

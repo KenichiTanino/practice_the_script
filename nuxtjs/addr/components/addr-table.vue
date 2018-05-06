@@ -70,7 +70,7 @@ export default {
       return genders[gender]
     },
     removeRow(index) {
-      this.$store.commit("tables/remove", index)
+      this.$store.dispatch("tables/remove", index)
     },
     editRow(row, index) {
       this.listIndex = index

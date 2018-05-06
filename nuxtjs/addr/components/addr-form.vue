@@ -102,9 +102,9 @@ export default {
         .then(() => {
           var addr = addr_set(this.form, this.index)
           if (this.index === undefined) {
-            this.$store.commit("tables/add", addr)
+            this.$store.dispatch("tables/add", addr)
           } else {
-            this.$store.commit("tables/set", addr)
+            this.$store.dispatch("tables/set", addr)
           }
           this.$message({
             type: "success",
