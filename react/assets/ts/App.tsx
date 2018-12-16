@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as ReactDOM from 'react-dom';
 import { FormComponent } from "./components/react-form"
-import { ClientTblPage } from "./components/react-table"
+import { SearchTable } from "./components/react-table"
 //import { Hello } from "./components/Hello"
 
 import { BrowserRouter as AppRouter, Route, Link } from 'react-router-dom'
@@ -11,8 +11,29 @@ const liStyle = {
   width: '100px'
 }
 
-const App = () => (
-  <AppRouter>
+class App extends React.Component<{}, {}> {
+    private subRoot1: HTMLDivElement;
+
+	constructor(props, state) {
+    	super(props, state);
+
+    	this.subRoot1 = document.createElement('div');
+
+    	document.querySelector('#reacttabledivtest').appendChild(this.subRoot1);
+
+  	}
+  
+	componentDidMount() {
+    	ReactDOM.render(<SearchTable {...this.state} />, this.subRoot1);
+  	}
+
+	componentWillUnmount() {
+    	ReactDOM.unmountComponentAtNode(this.subRoot1);
+  	}
+
+	render() {
+		return (
+  	<AppRouter>
      <div style={{width: '500px', textAlign: 'left'}}>
        <ul style={{display: 'flex'}}>
          <li style={liStyle}><Link to='/'>top</Link></li>
@@ -25,8 +46,10 @@ const App = () => (
          <Route path='/new' component={New} />
        </div>
      </div>
-  </AppRouter>
-)
+  	</AppRouter>
+	)
+	}
+};
 
 const Home = () => (
   <div>
@@ -40,7 +63,7 @@ const Home = () => (
 const Search = () => (
   <div>
     <h2>検索 and 一覧</h2>
-    <ClientTblPage />
+    <SearchTable />
   </div>
 )
 

@@ -30,11 +30,11 @@ return {
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
       ]
     },
-    plugins: [
-      new htmlWebpackPlugin({
-        template: path.resolve(__dirname, "static/index.html"),
-      })
-    ],
+    //plugins: [
+    //  new htmlWebpackPlugin({
+    //    template: path.resolve(__dirname, "static/index.html"),
+    //  })
+    //],
 	devServer: {
 		host: '0.0.0.0',
 		disableHostCheck: true

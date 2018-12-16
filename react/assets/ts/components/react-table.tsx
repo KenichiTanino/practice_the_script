@@ -1,25 +1,27 @@
 import * as React from "react"
 import * as ReactDOM from 'react-dom';
 
-import SortableTbl from 'react-sort-search-table';
-//require.context('reactSortSearchTblFonts', true, /\.?/);
+import 'isomorphic-fetch';
+import ReactTable from 'react-table'
 
-let MyData = 
+import { SearchTextForm } from './react-search-text'
+
+let tableData = 
 [
     {
-        "id": "1",
+        "id": 1,
         "client_name": "a.b.c.d",
         "status": 'aaa',
         "create_date": "2018/10/12",
     },
     {
-        "id": "2",
+        "id": 2,
         "client_name": "f.d.a.dd",
         "status": 'bbb',
         "create_date": "2018/10/19",
     },
     {
-        "id": "2",
+        "id": 3,
         "client_name": "f.d.a.dd",
         "status": 'bbb',
         "create_date": "2018/10/19",
@@ -28,9 +30,7 @@ let MyData =
 
 interface BaseClientEditComponentProps {
     rowData: object,
-    tdData: string,
 };
-
 
 class BaseClientEditComponent extends React.Component<BaseClientEditComponentProps>{
     constructor(props) {
@@ -39,7 +39,7 @@ class BaseClientEditComponent extends React.Component<BaseClientEditComponentPro
     }
     editItem(){
         alert("edit " + this.props.rowData);
-        console.log(this.props.rowData, this.props.tdData);
+        console.log(this.props.rowData);
     }
     render () {
         return (	
@@ -50,39 +50,64 @@ class BaseClientEditComponent extends React.Component<BaseClientEditComponentPro
     }
 }
 
-export const ClientTblPage = (props) =>{
-    let col = [
-        "id",
-        "client_name",
-        "status",
-        "create_date",
-        "detail"
-    ];
-    let tHead = [
-        "ID",
-        "クライアント名",
-        "状態",
-        "作成日",
-        "詳細"		
-    ];
-    let paging = false;
-    let defaultCSS = false;
- 
-    return (
-        <SortableTbl tblData={MyData} 
-            paging={paging}
-            defaultCSS={defaultCSS}
-            tHead={tHead}
-            customTd={[
-                        {custd: BaseClientEditComponent, keyItem: "detail"},
-                        ]}
-            dKey={col}
-        />
-    );
+let tHead = [
+    { accessor: "id", Header: "ID"},
+    { accessor: "client_name", Header: "クライアント名"},
+    { accessor: "status", Header: "状態"},
+    { accessor: "create_date", Header: "作成日"},
+    { Header: '詳細', maxWidth: 50, Cell: row => <BaseClientEditComponent rowData={row} /> }
+];
+
+interface SearchTableData {
+	id: number;
+    client_name: string;
+    status: string;
+    create_date: string;
 };
- 
-ClientTblPage.propTypes = {
+
+interface SearchTableState {
+    value: string;
+	tableData: SearchTableData[];
 };
- 
- 
-//ReactDOM.render(<ClientTblPage/>, document.getElementById("app"));
+
+export class SearchTable extends React.Component<{}, SearchTableState>{
+    constructor(props) {
+        super(props);
+		var init_value = "";
+        let init_value_el =  document.getElementById('search_init_search')
+        if (init_value_el != null) {
+			init_value = init_value_el.textContent;
+		}
+		
+        this.state = {
+			value: init_value,
+			tableData: tableData
+		};
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(value) {
+        //window.alert('Inputted value: ' + value)
+		const self = this;
+		fetch('/api/table')
+			.then(function(response) {
+				if (response.status >= 400) {
+					throw new Error("Bad response from server");
+				}
+				return response.json();
+			})
+			.then(function(tables) {
+				console.log(tables);
+            	self.setState({tableData: tables});
+    		});
+	}
+
+    render () {
+        return (
+            <div>
+                <SearchTextForm value={this.state.value} onSubmit={this.handleSubmit.bind(this)} />
+            	<ReactTable data={this.state.tableData} columns={tHead} className="-striped -highlight" showPaginationBottom={false} />
+            </div>
+        );
+    }
+};

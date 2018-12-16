@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./static/",
     "sourceMap": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "module": "commonjs",
