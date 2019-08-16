@@ -1,0 +1,438 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: TODO
+paths:
+  /api/addrs:
+    get:
+      operationId: ListAddrs
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+    post:
+      operationId: createAddr
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - birthday
+              - gender
+              - address
+              - jobs
+              - note
+              properties:
+                name:
+                  type: string
+                  maxLength: 128
+                birthday:
+                  type: string
+                  format: date
+                gender:
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                address:
+                  type: string
+                  maxLength: 128
+                jobs:
+                  type: string
+                  maxLength: 1024
+                note:
+                  type: string
+                  maxLength: 128
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+  /api/addrs/{id}:
+    get:
+      operationId: retrieveAddr
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this addr.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+    put:
+      operationId: updateAddr
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this addr.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - birthday
+              - gender
+              - address
+              - jobs
+              - note
+              properties:
+                name:
+                  type: string
+                  maxLength: 128
+                birthday:
+                  type: string
+                  format: date
+                gender:
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                address:
+                  type: string
+                  maxLength: 128
+                jobs:
+                  type: string
+                  maxLength: 1024
+                note:
+                  type: string
+                  maxLength: 128
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+    patch:
+      operationId: partial_updateAddr
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this addr.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 128
+                birthday:
+                  type: string
+                  format: date
+                gender:
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                address:
+                  type: string
+                  maxLength: 128
+                jobs:
+                  type: string
+                  maxLength: 1024
+                note:
+                  type: string
+                  maxLength: 128
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+    delete:
+      operationId: destroyAddr
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this addr.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                required:
+                - name
+                - birthday
+                - gender
+                - address
+                - jobs
+                - note
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 128
+                  birthday:
+                    type: string
+                    format: date
+                  gender:
+                    enum:
+                    - 0
+                    - 1
+                    - 2
+                  address:
+                    type: string
+                    maxLength: 128
+                  jobs:
+                    type: string
+                    maxLength: 1024
+                  note:
+                    type: string
+                    maxLength: 128
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+  /api/upload_form/{filename}:
+    post:
+      operationId: createUploadformViewSet
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+  /api/upload_form/{filename}/{id}:
+    delete:
+      operationId: destroyUploadformViewSet
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: filename
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
