@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: '<?xml version=''1.0''?>
+
+      <methodCall>
+
+      <methodName>time_result</methodName>
+
+      <params>
+
+      </params>
+
+      </methodCall>
+
+'
+    headers:
+      Accept-Encoding:
+      - gzip
+      Content-Length:
+      - '105'
+      Content-Type:
+      - text/xml
+      User-Agent:
+      - Python-xmlrpc/3.6
+    method: POST
+    uri: http://localhost:8889/
+  response:
+    body:
+      string: '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <params>
+
+        <param>
+
+        <value><dateTime.iso8601>20191109T17:39:43</dateTime.iso8601></value>
+
+        </param>
+
+        </params>
+
+        </methodResponse>
+
+'
+    headers:
+      Content-length:
+      - '163'
+      Content-type:
+      - text/xml
+      Date:
+      - Sat, 09 Nov 2019 08:39:43 GMT
+      Server:
+      - BaseHTTP/0.6 Python/3.6.8
+    status:
+      code: 200
+      message: OK
+version: 1
