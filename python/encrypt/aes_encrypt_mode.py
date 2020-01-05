@@ -57,13 +57,13 @@ def gcm_encrypt_and_decrypt(secret_key, raw_data):
 
 
 # OCB
-def ocb_encrypt(key, raw_data):
+def ocb_encrypt(secret_key, raw_data):
     crypto = AES.new(secret_key, AES.MODE_OCB)
     content, tag = crypto.encrypt_and_digest(raw_data)
     return dict(content=content, nonce=crypto.nonce, tag=tag)
 
 
-def ocb_decrypt(key, encrypted_data):
+def ocb_decrypt(secret_key, encrypted_data):
     crypto = AES.new(secret_key, AES.MODE_OCB, nonce=encrypted_data['nonce'])
     return crypto.decrypt_and_verify(encrypted_data['content'], encrypted_data['tag'])
 
@@ -91,6 +91,6 @@ if __name__ == "__main__":
 
     t = start_time()
     for i in range(100000):
-        decrypted_data = gcm_encrypt_and_decrypt(key, raw_data)
+        decrypted_data = ocb_encrypt_and_decrypt(key, raw_data)
     end_time(t, 'MODE_OCB')
     print(decrypted_data)
