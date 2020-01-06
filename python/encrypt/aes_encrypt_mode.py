@@ -22,61 +22,81 @@ def generate_random_secret_key(algorithm_func=sha256):
 
 
 # CTR
-def ctr_encrypt(secret_key, raw_data):
+def ctr_encrypt(secret_key, raw_data, f=True):
     crypto = AES.new(secret_key, AES.MODE_CTR)
-    return dict(content=crypto.encrypt(raw_data),
-                nonce=crypto.nonce)
+    if f:
+        return dict(content=crypto.encrypt(raw_data),
+                    nonce=crypto.nonce)
+    else:
+        return dict(content=raw_data,
+                    nonce=crypto.nonce)
 
 
-def ctr_decrypt(secret_key, encrypted_data):
+def ctr_decrypt(secret_key, encrypted_data, f=True):
     """ encrypted_data = dict(content, nonce) """
     crypto = AES.new(secret_key, AES.MODE_CTR, nonce=encrypted_data['nonce'])
-    return crypto.decrypt(encrypted_data['content'])
+    if f:
+        return crypto.decrypt(encrypted_data['content'])
+    else:
+        return encrypted_data['content']
 
 
-def ctr_encrypt_and_decrypt(secret_key, raw_data):
-    encrypted_data = ctr_encrypt(secret_key, raw_data.encode())
-    return ctr_decrypt(secret_key, encrypted_data)
+def ctr_encrypt_and_decrypt(secret_key, raw_data, f=True):
+    encrypted_data = ctr_encrypt(secret_key, raw_data.encode(), f)
+    return ctr_decrypt(secret_key, encrypted_data, f)
 
 
 # GCM
-def gcm_encrypt(secret_key, raw_data):
+def gcm_encrypt(secret_key, raw_data, f=True):
     crypto = AES.new(secret_key, AES.MODE_GCM)
-    content, tag = crypto.encrypt_and_digest(raw_data)
+    if f:
+        content, tag = crypto.encrypt_and_digest(raw_data)
+    else:
+        content, tag = raw_data, None
     return dict(content=content, nonce=crypto.nonce, tag=tag)
 
 
-def gcm_decrypt(secret_key, encrypted_data):
+def gcm_decrypt(secret_key, encrypted_data, f=True):
     crypto = AES.new(secret_key, AES.MODE_GCM, nonce=encrypted_data['nonce'])
-    return crypto.decrypt_and_verify(encrypted_data['content'], encrypted_data['tag'])
+    if f:
+        return crypto.decrypt_and_verify(encrypted_data['content'], encrypted_data['tag'])
+    else:
+        return encrypted_data['content']
 
 
-def gcm_encrypt_and_decrypt(secret_key, raw_data):
-    encrypted_data = gcm_encrypt(secret_key, raw_data.encode())
-    return gcm_decrypt(secret_key, encrypted_data)
+def gcm_encrypt_and_decrypt(secret_key, raw_data, f=True):
+    encrypted_data = gcm_encrypt(secret_key, raw_data.encode(), f)
+    return gcm_decrypt(secret_key, encrypted_data, f)
 
 
 # OCB
-def ocb_encrypt(secret_key, raw_data):
+def ocb_encrypt(secret_key, raw_data, f):
     crypto = AES.new(secret_key, AES.MODE_OCB)
-    content, tag = crypto.encrypt_and_digest(raw_data)
+    if f:
+        content, tag = crypto.encrypt_and_digest(raw_data)
+    else:
+        content, tag = raw_data, None
     return dict(content=content, nonce=crypto.nonce, tag=tag)
 
 
-def ocb_decrypt(secret_key, encrypted_data):
+def ocb_decrypt(secret_key, encrypted_data, f=True):
     crypto = AES.new(secret_key, AES.MODE_OCB, nonce=encrypted_data['nonce'])
-    return crypto.decrypt_and_verify(encrypted_data['content'], encrypted_data['tag'])
+    if f:
+        return crypto.decrypt_and_verify(encrypted_data['content'], encrypted_data['tag'])
+    else:
+        return encrypted_data['content']
 
 
-def ocb_encrypt_and_decrypt(secret_key, raw_data):
-    encrypted_data = ocb_encrypt(secret_key, raw_data.encode())
-    return ocb_decrypt(secret_key, encrypted_data)
+def ocb_encrypt_and_decrypt(secret_key, raw_data, f=True):
+    encrypted_data = ocb_encrypt(secret_key, raw_data.encode(), f)
+    return ocb_decrypt(secret_key, encrypted_data, f)
 
 
 if __name__ == "__main__":
     key = generate_random_secret_key()
 
     raw_data = 'raw_test_data'
+    # 暗号/復号
     t = start_time()
     for i in range(100000):
         decrypted_data = ctr_encrypt_and_decrypt(key, raw_data)
@@ -93,4 +113,23 @@ if __name__ == "__main__":
     for i in range(100000):
         decrypted_data = ocb_encrypt_and_decrypt(key, raw_data)
     end_time(t, 'MODE_OCB')
+    print(decrypted_data)
+
+    # 非暗号/復号
+    t = start_time()
+    for i in range(100000):
+        decrypted_data = ctr_encrypt_and_decrypt(key, raw_data, False)
+    end_time(t, 'MODE_CTR (非暗号)')
+    print(decrypted_data)
+
+    t = start_time()
+    for i in range(100000):
+        decrypted_data = gcm_encrypt_and_decrypt(key, raw_data, False)
+    end_time(t, 'MODE_GCM (非暗号)')
+    print(decrypted_data)
+
+    t = start_time()
+    for i in range(100000):
+        decrypted_data = ocb_encrypt_and_decrypt(key, raw_data, False)
+    end_time(t, 'MODE_OCB (非暗号)')
     print(decrypted_data)
