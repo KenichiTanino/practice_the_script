@@ -1,6 +1,6 @@
 from Cryptodome.Cipher import AES
 from hashlib import sha256
-import random
+import secrets
 
 
 import time
@@ -18,7 +18,7 @@ def end_time(start_time, message):
 
 
 def generate_random_secret_key(algorithm_func=sha256):
-    return algorithm_func(str(random.random).encode('utf-8')).digest()
+    return secrets.token_bytes(32)
 
 
 # CTR
@@ -92,44 +92,51 @@ def ocb_encrypt_and_decrypt(secret_key, raw_data, f=True):
     return ocb_decrypt(secret_key, encrypted_data, f)
 
 
-if __name__ == "__main__":
-    key = generate_random_secret_key()
-
-    raw_data = 'raw_test_data'
+def encrypto_and_decrypto(key, raw_data):
     # 暗号/復号
     t = start_time()
     for i in range(100000):
         decrypted_data = ctr_encrypt_and_decrypt(key, raw_data)
     end_time(t, 'MODE_CTR')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
 
     t = start_time()
     for i in range(100000):
         decrypted_data = gcm_encrypt_and_decrypt(key, raw_data)
     end_time(t, 'MODE_GCM')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
 
     t = start_time()
     for i in range(100000):
         decrypted_data = ocb_encrypt_and_decrypt(key, raw_data)
     end_time(t, 'MODE_OCB')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
 
     # 非暗号/復号
     t = start_time()
     for i in range(100000):
         decrypted_data = ctr_encrypt_and_decrypt(key, raw_data, False)
     end_time(t, 'MODE_CTR (非暗号)')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
 
     t = start_time()
     for i in range(100000):
         decrypted_data = gcm_encrypt_and_decrypt(key, raw_data, False)
     end_time(t, 'MODE_GCM (非暗号)')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
 
     t = start_time()
     for i in range(100000):
         decrypted_data = ocb_encrypt_and_decrypt(key, raw_data, False)
     end_time(t, 'MODE_OCB (非暗号)')
-    print(decrypted_data)
+    print('{:.20}'.format(decrypted_data.decode()))
+
+
+if __name__ == "__main__":
+    key = generate_random_secret_key()
+
+    raw_data = 'raw_test_data'
+    encrypto_and_decrypto(key, raw_data)
+
+    raw_data = secrets.token_hex(65536)
+    encrypto_and_decrypto(key, raw_data)
