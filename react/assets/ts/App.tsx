@@ -2,7 +2,6 @@ import * as React from "react"
 import * as ReactDOM from 'react-dom';
 import { FormComponent } from "./components/react-form"
 import { SearchTable } from "./components/react-table"
-//import { Hello } from "./components/Hello"
 
 import { BrowserRouter as AppRouter, Route, Link } from 'react-router-dom'
 

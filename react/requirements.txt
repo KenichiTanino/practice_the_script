@@ -3,4 +3,4 @@ Jinja2
 MarkupSafe
 itsdangerous
 mccabe
-request
+requests

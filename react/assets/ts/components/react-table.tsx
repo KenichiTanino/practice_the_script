@@ -2,11 +2,10 @@ import * as React from "react"
 import * as ReactDOM from 'react-dom';
 
 import 'isomorphic-fetch';
-import ReactTable from 'react-table'
-
+import { useTable } from 'react-table';
 import { SearchTextForm } from './react-search-text'
 
-let tableData = 
+let tableData =  
 [
     {
         "id": 1,
@@ -26,7 +25,7 @@ let tableData =
         "status": 'bbb',
         "create_date": "2018/10/19",
     }
-]
+];
 
 interface BaseClientEditComponentProps {
     rowData: object,
@@ -39,14 +38,13 @@ class BaseClientEditComponent extends React.Component<BaseClientEditComponentPro
     }
     editItem(){
         alert("edit " + this.props.rowData);
+        alert("edit " + this.props.rowData['row']['client_name']);
         console.log(this.props.rowData);
     }
     render () {
-        return (	
-            <td >	
-                <input type="button" className="btn btn-warning" value="Edit" onClick={this.editItem}/>
-            </td>
-        );
+      return (	
+        <input type="button" className="btn btn-warning" value="Edit" onClick={this.editItem} />
+      );
     }
 }
 
@@ -69,6 +67,46 @@ interface SearchTableState {
     value: string;
 	tableData: SearchTableData[];
 };
+
+function ReactTable({ columns, data }) {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable<SearchTableData>({
+    columns,
+    data,
+  })
+
+  // Render the UI for your table
+  return (
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, i) => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
 
 export class SearchTable extends React.Component<{}, SearchTableState>{
     constructor(props) {
@@ -106,7 +144,7 @@ export class SearchTable extends React.Component<{}, SearchTableState>{
         return (
             <div>
                 <SearchTextForm value={this.state.value} onSubmit={this.handleSubmit.bind(this)} />
-            	<ReactTable data={this.state.tableData} columns={tHead} className="-striped -highlight" showPaginationBottom={false} />
+            	<ReactTable data={this.state.tableData} columns={tHead} />
             </div>
         );
     }

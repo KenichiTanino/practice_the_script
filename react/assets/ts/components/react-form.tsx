@@ -50,7 +50,7 @@ export class FormComponent extends React.Component<FormProps, FormState>{
 
     render() {
         return (
-            <form action="javascript:void(0)" onSubmit={this.handleSubmit}>
+            <form action="" onSubmit={this.handleSubmit}>
                 {/* Name */}
                 <label htmlFor="name">お名前</label>
                 <input type="text" name="name" value={this.state.data.name} onChange={this.handleChange} />
@@ -65,8 +65,3 @@ export class FormComponent extends React.Component<FormProps, FormState>{
         );
     }
 };
-
-//ReactDOM.render(
-//    <FormComponent name="" email="" />,
-//   document.getElementById('multi-input-form')
-//);
