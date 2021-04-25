@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "element-ui": "^2.3.7",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",
     "nuxt": "^2.8.1"
   },
