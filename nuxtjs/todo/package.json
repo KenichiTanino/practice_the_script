@@ -16,14 +16,14 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
-    "nuxt": "^2.8.1"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.9.0",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.5.0",
     "prettier": "^1.12.1"
